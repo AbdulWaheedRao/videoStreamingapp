@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_video_streaming/controller/route.dart';
 import 'package:flutter_video_streaming/view/profile.dart';
 
@@ -6,6 +7,11 @@ late Size screenSize;
 late double screenHeight, screenWidth, clientHeight, bottomHeight, fullHeight;
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((value) => runApp(const MyApp()));
   runApp(const MyApp());
 }
 
@@ -49,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 5));
+        AnimationController(vsync: this, duration: const Duration(seconds: 7));
     _animation = tween.animate(_controller);
     setState(() {
       _controller.forward().whenComplete(() =>
@@ -74,6 +80,7 @@ class _SplashScreenState extends State<SplashScreen>
     bottomHeight = screenHeight - kBottomNavigationBarHeight;
     fullHeight = screenHeight - kToolbarHeight - kBottomNavigationBarHeight;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xff262626),
       body: Center(
         child: ScaleTransition(

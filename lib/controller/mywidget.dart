@@ -18,6 +18,10 @@ class MainWidget extends StatefulWidget {
 class _MainWidgetState extends State<MainWidget> {
   @override
   Widget build(BuildContext context) {
+    screenSize = MediaQuery.of(context).size;
+    screenWidth = screenSize.width;
+    screenHeight = screenSize.height;
+    fullHeight = screenHeight - kToolbarHeight - kBottomNavigationBarHeight;
     return Scaffold(
       body: IndexedStack(
         index: MainWidget.index,
@@ -35,7 +39,8 @@ class _MainWidgetState extends State<MainWidget> {
 
   Container bottomnavigation(BuildContext context) {
     return Container(
-      height: fullHeight * 0.11,
+      height: fullHeight * 0.12,
+      width: screenWidth,
       decoration: const BoxDecoration(
         color: Color(0xff101010),
       ),

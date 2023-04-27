@@ -14,6 +14,9 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
+    screenWidth = screenSize.width;
+    screenHeight = screenSize.height;
+    fullHeight = screenHeight - kToolbarHeight - kBottomNavigationBarHeight;
     return Scaffold(
       backgroundColor: Colors.black.withOpacity(0.9),
       appBar: AppBar(

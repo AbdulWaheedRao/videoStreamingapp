@@ -15,16 +15,43 @@ Route onGenerateRoute(RouteSettings settings) {
       builder: (context) => const SplashScreen(),
     );
   } else if (settings.name == ProfileScreen.pageName) {
-    return MaterialPageRoute(
-      builder: (context) => const ProfileScreen(),
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const ProfileScreen(),
+      transitionDuration: const Duration(seconds: 1),
+      reverseTransitionDuration: const Duration(seconds: 1),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+          SlideTransition(
+        position: animation.drive(
+            Tween<Offset>(begin: const Offset(0, 0.5), end: Offset.zero)),
+        child: child,
+      ),
     );
   } else if (settings.name == MainWidget.pageName) {
-    return MaterialPageRoute(
-      builder: (context) => const MainWidget(),
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const MainWidget(),
+      transitionDuration: const Duration(seconds: 1),
+      reverseTransitionDuration: const Duration(seconds: 1),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+          SlideTransition(
+        position: animation.drive(
+            Tween<Offset>(begin: const Offset(0, 0.5), end: Offset.zero)),
+        child: child,
+      ),
     );
   } else if (settings.name == HomeScreen.pageName) {
-    return MaterialPageRoute(
-      builder: (context) => const HomeScreen(),
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const HomeScreen(),
+      transitionDuration: const Duration(seconds: 1),
+      reverseTransitionDuration: const Duration(seconds: 1),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+          SlideTransition(
+        position: animation
+            .drive(Tween<Offset>(begin: const Offset(-1, 0), end: Offset.zero)),
+        child: child,
+      ),
     );
   } else if (settings.name == SearchScreen.pageName) {
     return MaterialPageRoute(
@@ -39,8 +66,16 @@ Route onGenerateRoute(RouteSettings settings) {
       builder: (context) => const WatchListScreen(),
     );
   } else if (settings.name == PlayScreen.pageName) {
-    return MaterialPageRoute(
-      builder: (context) => const PlayScreen(),
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const PlayScreen(),
+      transitionDuration: const Duration(seconds: 1),
+      reverseTransitionDuration: const Duration(seconds: 1),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+          ScaleTransition(
+        scale: animation,
+        child: child,
+      ),
     );
   } else {
     return MaterialPageRoute(
